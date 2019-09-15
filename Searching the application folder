@@ -1,0 +1,24 @@
+grep -lr "obesitysurgicalcenter.com" */conf/server.nginx
+
+
+
+Check your IP
+ /sbin/ifconfig
+
+
+
+
+
+define(‘ALLOW_UNFILTERED_UPLOADS’, true);
+
+
+define('ALLOW_UNFILTERED_UPLOADS', true);
+
+Please check the A records for all the domains added there if there are any AAAA records remove them if you are using Cloudflare pause that. 
+If issue remains please try renaming your htaccess and renew it again, do not attempt more than 2 or 3 times it has a rate limit
+
+
+
+
+
+find . -type f -exec sed -i -e 's/magento-296187-908038.cloudwaysapps.com/imasters.shop/g' {} \;

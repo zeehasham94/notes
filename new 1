@@ -1,0 +1,21 @@
+Here is how to take your website live from the Cloudways you can check this for creating A records:
+https://support.cloudways.com/how-do-i-take-my-website-live-from-cloudways/#tab-2
+
+You can check your DNS propagation here:
+https://www.whatsmydns.net
+
+
+Please be informed that this issue is out of the support scope that we provide as we are not managing your domains. 
+They are being managed by the domain provider.
+If you want us to manage your DNS we provide an add on DNS made easy you can subscribe to that
+We provide a DNS Management service (as an Add-on) if you want us to manage DNS for you. 
+Here's how you can activate it: https://support.cloudways.com/how-to-activate-dns-madeeasy-addon/
+
+*************************************************************
+
+https://status.digitalocean.com/
+Please be advised that there is an issue from the upstream provider, region is experiencing some network issues apologies 
+for the inconvenience we are in contact with them and will update our status page one the issue gets resolved
+
+
+

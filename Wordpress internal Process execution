@@ -1,0 +1,15 @@
+
+
+*If Wordpress internal Process execution lags which includes (intervention of PHP+MYSQL)*
+*For example:* Wp import or Export operation fails or takes huge amount of time to complete.
+
+*Steps to follow:*
+
+1- Mysql Version should be greater than 5.5.
+2- Engine should be InnoDB of all the tables except Mysql' informations schema.
+3- Php version should be 7 or above.
+4- Memory limit should be set with an appropriate value.
+5- Then run "wp cron event list".
+6- Hooks list would be populated with  `delete_version_transients`.
+7- Disable line 162 in `wp-content/plugins/woocommerce/includes/class-wc-cache-helper.php` .
+8- Run `"wp cron event delete delete_version_transients"` to remove the old hooks.

@@ -1,0 +1,8 @@
+Permanent redirction from any link
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^beforeverhealthier.com [NC,OR]
+RewriteCond %{HTTP_HOST} ^www.beforeverhealthier.com [NC]
+RewriteRule ^(.*)$ http://cookitrealgood.com/$1 [L,R=301,NC]
+
+
+

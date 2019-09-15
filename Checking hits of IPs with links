@@ -1,0 +1,30 @@
+********** Most  recent log *****************
+for A in $(ls -la | awk '{print $NF}'); do echo $A && awk '{print $1,$7}' $A/logs/apache_*.access.log | cut -d? -f1 | sort | uniq -c |sort -nr | head -n 50 | awk -F";" '{print $1}' ; done
+
+for A in $(ls -la | awk '{print $NF}'); do echo $A && awk '{print $1,$7}' $A/logs/apache_*.access.log.2 | cut -d? -f1 | sort | uniq -c |sort -nr | head -n 50 | awk -F";" '{print $1}' ; done
+
+
+
+***********For zipped logs***************
+zcat apache_*.access.log.*.gz | awk '{ print $1,$7 }' | sort -n | uniq -c | sort -nr  | head -20
+
+
+
+find -type f -exec sed -i 's/267416-829837-1-raikfcquaxqncofqfm.stackpathdns.com/www.stonecenteronline.com/g' {} ';'
+
+
+nginx-app.status.log 
+
+
+
+# Allow Firewall Sucuri
+<FilesMatch ".*">
+Require ip 
+</FilesMatch>
+
+
+
+kaqgthuryn
+   1983 151.65.70.103 /wp-admin/admin-ajax.php
+
+   

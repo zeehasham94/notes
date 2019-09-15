@@ -1,0 +1,2 @@
+node js start pm2 package 
+pm2 start <file name>.js

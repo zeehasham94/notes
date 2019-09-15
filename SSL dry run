@@ -1,0 +1,4 @@
+SSL Dry run command
+
+
+/usr/local/bin/letsencrypt-auto certonly --webroot -w /home/283900.cloudwaysapps.com/mkebmqvxde/public_html --agree-tos -d www.vintagedatasolutions.com -d vintagedatasolutions.com  --dry-run

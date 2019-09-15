@@ -1,0 +1,13 @@
+
+
+*Cloning/Staging of Multisite leads to "Database connection error"*
+
+This is a known issue, when we copy the multisite wordpress and set the different domain to access it, it will throw DB error.
+
+*Solution:*
+
+the wp_blog table would have different entries, We need to remove the older domain and have to add the newer one.
+
+
+
+

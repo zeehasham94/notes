@@ -1,0 +1,8 @@
+reason behind *Low Varnish HIT rate*. The following commands will help to identify the URLs which are having MISS.
+
+*varnishlog | grep -i 'BereqURL\|BerespStatus\|ReqHeader      Host:'*  ( will show BereqURL, status code and website domain)
+*varnishtop -i BereqURL* (will provide you with an updating list of URL requests going to the back-end (Misses).)
+
+Please note: BereqURLis the URL i.e sent to the backend (Apache)
+
+Master user can also run it.

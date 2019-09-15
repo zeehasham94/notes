@@ -1,0 +1,17 @@
+sed -i -e s'#solidgaming#hpbwaunpvn#'g solidgaming.sql
+sed -i -e s'#olddb#newdb#'g solidgaming.sql
+
+
+
+sed -i -e s'#magento-296187-908038.cloudwaysapps.com#imasters.shop#'g back.sql
+
+sed -i 's/uptivo.co.uk/wordpress-192970-843929.cloudwaysapps.com/g' backup.sql
+
+find -type f -exec sed -i 's/jkshop.gg/phpstack-251670-831514.cloudwaysapps.com/g' {} ';' ( TO ALL PUBLIC_HTML) 
+
+
+find . -type f -exec sed -i -e 's/HTTP URL/HTTPS URL/g' {} \;
+
+
+
+find . -type f -exec sed -i -e 's/woocommerce-198205-861864.cloudwaysapps.com/www.kitz-eyewear.at/g' {} \;

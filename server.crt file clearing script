@@ -1,0 +1,3 @@
+***** clearing all the server.crt files for broken chain issue ******
+
+for A in $(ls -la | awk '{print $NF}'); do echo $A && echo > $A/ssl/server.crt ; done

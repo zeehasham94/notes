@@ -1,0 +1,22 @@
+Hi there,
+
+The requested email box has been created in Rackspace, following are the details of your email box:
+
+URL: https://apps.rackspace.com
+
+Email: info@babygo.gr
+Password: 3EHteZnCg
+
+
+NOTE: Please change the password of the email at your convenience.
+
+To update MX record of your domain. Please follow guide on link below:
+https://support.rackspace.com/how-to/set-up-dns-records-for-cloud-office-email/
+
+Feel free to ask us if any further assistance is needed.
+
+Regards,
+
+
+
+find . -type f -exec sed -i -e 's/wordpress-295362-905833.cloudwaysapps.com/natphoto.cl/g' {} \;

@@ -1,0 +1,82 @@
+When trying to switch from Developer mode to Production mode:-
+
+php bin/magento deploy:mode:set production
+
+********* cache clean ************
+
+php bin/magento cache:status
+php bin/magento cache:clean
+php bin/magento cache:flush
+
+www.zenspacedesks.com.au
+(‘WP_CACHE_KEY_SALT’, ‘www.zenspacedesks.com.au’);
+
+
+***********magento version**********
+php bin/magento --version
+
+***********module status ***************
+
+
+php bin/magento module:status
+
+*********** enable module *************
+php bin/magento module:enable <module name>
+
+
+
+*********** disable module***************
+php bin/magento module:enable <module name>
+
+
+
+*********** Magento permission issue fatal error writable message with this***************
+Run these commands in public html in magento application
+
+chmod -R 777 var
+find . -type d -print0 | xargs -0 chmod 0775
+find . -type f -print0 | xargs -0 chmod 0664
+find ./var -type d -exec chmod 777 {} \;
+find ./pub/media -type d -exec chmod 777 {} \;
+find ./pub/static -type d -exec chmod 777 {} \;
+chmod 777 ./app/etc
+chmod 644 ./app/etc/*.xml
+chmod u+x bin/magento
+
+
+***********************
+Manageto sheduler script 
+<?php
+$servername = "localhost";
+$username = "username";
+$password = "rN3qGG6qV5";
+$dbname = "dbname";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+   die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = "DELETE FROM cron_schedule WHERE created_at < DATE_SUB(NOW(), INTERVAL 1 DAY)";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+   // output data of each row
+   while($row = $result->fetch_assoc()) {
+       echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
+   
+} else {
+   echo "0 results";
+}
+$conn->close();
+?>
+
+***************************************
+select count(*) from cron_sheduler;
+
+********************************
+
+********Magento 1 cache clear**********
+./mage clear-cache

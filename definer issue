@@ -1,0 +1,6 @@
+We would like to inform you that you are facing issue while importing the database because  
+you have incorrect DEFINER  values  in your database  
+if anytime you see this error while importing the database you will replace the  
+DEFINER trigger with Cloudways database username  i.e.
+For example in a case, 
+you will replace DEFINER=`use_dev`@`localhost`   to  DEFINER=`tzqgvtayec`@`%` in your SQL file then re-upload the database everything will work fine then.
