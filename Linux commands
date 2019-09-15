@@ -1,0 +1,204 @@
+To check the services working on a port
+Netstat  -plunt
+Lsof -i: port number
+*********************************************
+
+To search installed packages 
+Apt-cache search pkg name
+Apt-cache showpkg package name
+Package name -v
+
+*********************************
+Restarting the services
+Systemctl restart service name
+/etc/init.d/service apache2   restart
+/etc/init.d/service nginx   restart
+/etc/init.d/service mysql   restart
+/etc/init.d/service php   restart
+***************************************+
+Checking available packages in Cache
+apt-cache search package name
+
+****************************************
+Fetching logs
+Tail -f /var/log/folder/error.log
+*************************************
+Mysql commands link
+http://g2pc1.bu.edu/~qzpeng/manual/MySQL%20Commands.htm
+
+***********************************
+Some of The Most Important SQL Commands
+•	SELECT - extracts data from a database
+•	UPDATE - updates data in a database
+•	DELETE - deletes data from a database
+•	INSERT INTO - inserts new data into a database
+•	CREATE DATABASE - creates a new database
+•	ALTER DATABASE - modifies a database
+•	CREATE TABLE - creates a new table
+•	ALTER TABLE - modifies a table
+•	DROP TABLE - deletes a table
+•	CREATE INDEX - creates an index (search key)
+•	DROP INDEX - deletes an index
+*******************************************************
+
+checking apache2 and nginx configuration
+apache2ctl configtest 
+apache2ctl -t
+nginx –t
+wp theme --allow-root 
+
+*************************************************
+
+Cron jobs in linux
+Each line in the user crontab file contains six fields separated by a space followed by the command to be run.
+This command creates files every 1 min with file data and time
+*/1 * * * * echo "something" >> /home/252490.cloudwaysapps.com/btrmvbcwcb/public_html/test/helloFile_$(date +\%Y\%m\%d\%H\%M\%S).txt
+List cron tab with user
+Corntab –l –u username
+Syntax for cron job
+* * * * * command(s)
+- - - - -
+| | | | |
+| | | | ----- Day of week (0 - 7) (Sunday=0 or 7)
+| | | ------- Month (1 - 12)
+| | --------- Day of month (1 - 31)
+| ----------- Hour (0 - 23)
+------------- Minute (0 - 59)
+
+THe first five fields may contain one or more values, separated by a comma or a range of values separated by a hyphen.
+* -The asterisk operator means any value or always. If you have the asterisk symbol in the Hour field it means the task will be performed each hour.
+, -The comma operator allows you to specify a list of values for repetition. For example, if you have 1,3,5 in the Hour field, the task will run at 1 am, 3 am and 5 am.
+- -The hyphen operator allows you to specify a range of values. If you have 1-5 in the Day of week field the task will run every weekday (From Monday to Friday).
+/ -The slash operator allows you to specify values that will be repeated over a certain interval between them. For example, if you have */4 in the Hour field it means the action will be performed every four hours. It is same as specifying 0,4,8,12,16,20. Instead of asterisk before the slash operator you can also use a range of values, 1-30/10 means the same as 1,11,21
+******************************************************************************************
+
+System-wide Crontab Files
+The syntax of system-wide crontab files is slightly different than user crontabs. It contains an additional mandatory user field used to specify which user to run the cron job under.
+
+* * * * * <username> command(s)
+
+crontab [ -u user ] [ -i ] { -e | -l | -r }
+                (default operation is replace, per 1003.2)
+        -e      (edit user's crontab)
+        -l      (list user's crontab)
+        -r      (delete user's crontab)
+        -i      (prompt before deleting user's crontab)
+
+************************************************************************************
+
+Creating new files with date in cron 
+
+(filename)_$(date +\%Y\%m\%d\%H\%M\%S).txt
+
+*****************************************************
+
+Testing your cron scheduling
+https://crontab.guru
+**********************************************
+sysv-rc-conf will open run level tables
+*********************************************
+
+shows all open ports
+sudo nmap -T Aggressive -A -v 127.0.0.1 -p 1-65000
+
+*******************************************
+
+Making mysql database dump search and replace
+
+Mysqldump –u (enter the username) –p (databasename) > databasename.sql 
+sed -i 's/http:\/\/wordpress-252490-785060.cloudwaysapps.com/http:\/\/wordpress-252490-785060.cloudwaysapps.com/g' btrmvbcwcb.sql
+
+*******************************************************************************
+
+Rsync on Linux with options
+
+rsync -avz --progress /home/hallinta/purewaste master_mucssyvpfd@95.179.129.85:/home/master/applications/zedetnwvyk/tmp
+rsync -avz --progress source path master_mucssyvpfd@95.179.129.85:detinationpath
+
+
+Install rsync
+If the command is not included by default inside the server configuration we can easily add it using the default package manager:
+CentOS 6.4:
+1	sudo yum install rsync
+Debian/Ubuntu:
+1	sudo apt-get install rsync
+
+********************************************************************************
+
+Check SSH configuration
+In order to make sure that you will be able to transfer files from/to the remote server using rsync over SSH you can first try to establish an SSH connection (How to setup SSH keys):
+1	ssh user1@X.X.X.X
+where X.X.X.X is the remote server's IP address. Instead an IP address a hostname can be used as well.
+If the connection is successful then you should not experience problems initiating the transfer.
+Depending on the SSH authentication method configured on the server you might be prompted to fill in SSH password or key passphrase upon execution of the rsync command.
+*********************************************************************************************
+
+1	Transfer data using rsync
+Copy a file from local server to remote one:
+1	rsync -v -e ssh /home/localuser/testfile.txt remoteuser@X.X.X.X:/home/remoteuser/transfer
+In the above example we will copy a file called testfile.txt from the current server to the remote one and will place it inside the folder /home/remoteuser/transfer.
+The output should be similar to the following one:
+1
+2	sent X bytes  received X bytes  X.X bytes/sec
+total size is X  speedup is X.X
+If the remote server is configured to work with non-default SSH port (other than 22) we can specify that inside the -e option:
+1	rsync -v -e "ssh -p2222" /home/localuser/testfile.txt remoteuser@X.X.X.X:~/transfer
+Again the testfile.txt will be copied inside the /home/remoteuser/transfer folder situated on the remote server.
+Copy a file from remote server into a local folder:
+1	rsync -v -e ssh remoteuser@X.X.X.X:/home/remoteuser/transfer/testfile.txt /home/localuser/
+In the above example we will copy a file called testfile.txt from the remote server inside a local folder called /home/localuser/.
+Synchronize local folder on remote server:
+1	rsync -r -a -v -e ssh --delete /home/localuser/testfolder remoteuser@X.X.X.X:/home/remoteuser/testfolder
+Synchronize folder from the remote server on the local server:
+1	rsync -r -a -v -e ssh --delete remoteuser@X.X.X.X:/home/remoteuser/testfolder /home/localuser/testfolder
+Here is a list of some of the most common rsync options:
+•	--delete - delete files that don't exist on sender (system)
+•	-v - verbose (-vv will provide more detailed information)
+•	-e "ssh options" - specify the ssh as remote shell
+•	-a - archive mode - it preserves permissions (owners, groups), times, symbolic links, and devices
+•	-r - recurse into directories
+•	-z - compress file data during transfer
+•	--exclude 'foldername' – excludes the corresponding folder from transfer
+•	-P – show progress during transfer
+
+************************************************************************************************
+
+How to Check Hardware Information on Linux Using Command Line
+
+The lscpu command gives you information about the CPU and processing units. It does not have any other options or functionality.
+The lspci is another command line tool that lists all the PCI buses and details about the devices connected to them like VGA adapter, graphics card, network adapter, usb ports, SATA controller, etc.
+You can list all scsi/sata devices like hard drives and optical drives by running the following command:
+lsscsi
+You can check the amount of used, free and total amount of RAM on your system with the free command.
+free -m
+The dmidecode command is different from all other commands. It extracts hardware information by reading data from the DMI tables.
+dmidecode -t processor
+dmidecode -t memory
+
+useful link: https://www.maketecheasier.com/check-hardware-information-linux/
+*****************************************************************************************************
+
+Command for creating a self signed certificate 
+
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt.
+
+****************************************************************************************************
+
+check ram and folder sizes disk space and backgrounds operations
+
+free –m check ram
+lscpu or dmidecode –t processor for CPU
+df –h tell free disk space
+du-sh or du-h tells folder space in current directory 
+
+**********************************************************************************************
+
+time and date API for using with CURL
+http://worldtimeapi.org/
+
+****************************************************************************************
+Check email content of post fix
+postcat -q Queue ID
+mailq <checks queue for mails>
+***************************************************************************
+
